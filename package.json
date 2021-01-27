@@ -1,0 +1,55 @@
+{
+  "name": "capacitor-android-bluetoothmanager",
+  "version": "0.0.1",
+  "description": "Access to the Android Bluetooth Manager",
+  "main": "dist/plugin.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "lint": "npm run prettier -- --check",
+    "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
+    "build": "npm run clean && tsc && rollup -c rollup.config.js",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "JBay Solutions Lda.",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/android": "^2.4.6",
+    "@capacitor/core": "^2.4.6",
+    "@ionic/prettier-config": "^1.0.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "prettier": "^2.0.5",
+    "prettier-plugin-java": "^0.8.0",
+    "rimraf": "^3.0.0",
+    "rollup": "^2.21.0",
+    "typescript": "~3.8.3"
+  },
+  "peerDependencies": {
+    "@capacitor/core": "^2.4.6"
+  },
+  "files": [
+    "dist/",
+    "android/",
+    "CapacitorAndroidBluetoothmanager.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "android": {
+      "src": "android"
+    }
+  },
+  "prettier": "@ionic/prettier-config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbaysolutions/capacitor-android-bluetoothmanager"
+  },
+  "bugs": {
+    "url": "https://github.com/jbaysolutions/capacitor-android-bluetoothmanager/issues"
+  }
+}

@@ -1,6 +1,6 @@
 # Capacitor-Android-BluetoothManager
 
-**Current version: 0.0.2**
+**Current version: 0.0.3**
 
 **NPM release: https://www.npmjs.com/package/capacitor-android-bluetoothmanager**
 

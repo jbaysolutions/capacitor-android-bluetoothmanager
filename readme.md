@@ -1,6 +1,12 @@
 # Capacitor-Android-BluetoothManager
 
-**Current version: 0.0.3**
+<p align="center">
+<a href="https://www.npmjs.com/package/vue-grid-layout">
+    <img src="https://img.shields.io/npm/v/capacitor-android-bluetoothmanager.svg"/> 
+    <img src="https://img.shields.io/npm/dm/capacitor-android-bluetoothmanager.svg"/>
+</a></p>
+
+**Current version: 0.0.4**
 
 **NPM release: https://www.npmjs.com/package/capacitor-android-bluetoothmanager**
 

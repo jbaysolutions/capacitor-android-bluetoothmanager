@@ -1,10 +1,17 @@
-# Capacitor-Android-BluetoothManager
+<p align="center"><a href="https://jbaysolutions.github.io/capacitor-android-bluetoothmanager/" target="_blank" rel="noopener noreferrer"><img width="100" src="https://jbaysolutions.github.io/capacitor-android-bluetoothmanager/assets/img/logo.png" alt="Capacitor Android Bluetoothmanager"></a></p>
+
+<h1 align="center">Capacitor-Android-BluetoothManager</h1>
+
 
 <p align="center">
 <a href="https://www.npmjs.com/package/capacitor-android-bluetoothmanager">
     <img src="https://img.shields.io/npm/v/capacitor-android-bluetoothmanager.svg"/> 
     <img src="https://img.shields.io/npm/dm/capacitor-android-bluetoothmanager.svg"/>
 </a></p>
+
+<h2 align="center">
+<a href="https://jbaysolutions.github.io/capacitor-android-bluetoothmanager/" target="_blank">Documentation Website</a>
+</h2>
 
 **Current version: 0.0.4**
 

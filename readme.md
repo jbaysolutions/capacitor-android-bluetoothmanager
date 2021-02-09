@@ -14,6 +14,7 @@
 
 **Current version: 0.0.4**
 
+
 **NPM release: https://www.npmjs.com/package/capacitor-android-bluetoothmanager**
 
 --- 

@@ -7,23 +7,17 @@ tagline: Capacitor plugin to allow access to the underlying Bluetooth Manager
 actionText: Get Started →
 actionLink: /guide/
 features:
-- title: ✥ Draggable widgets
+- title: Enable Bluetooth
   details:
-- title: ⇲ Resizable widgets
+- title: Disable Bluetooth
   details:
-- title: Static widgets
+- title: Take care of Bluetooth Permissions
   details: 
-- title: Bounds checking for dragging and resizing
+- title: Get Device name
   details: 
-- title: Widgets can be added or removed without rebuilding grid
+- title: Set Device name
   details: 
-- title: Layout can be serialized and restored
-  details: 
-- title: Automatic RTL support (resizing not working with RTL on 2.2.0)
-  details: 
-- title: Responsive
-  details: 
-- title: Min/max w/h per item
+- title: Listen for State Changes
   details: 
 ---
 

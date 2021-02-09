@@ -1,7 +1,7 @@
 # Capacitor-Android-BluetoothManager
 
 <p align="center">
-<a href="https://www.npmjs.com/package/vue-grid-layout">
+<a href="https://www.npmjs.com/package/capacitor-android-bluetoothmanager">
     <img src="https://img.shields.io/npm/v/capacitor-android-bluetoothmanager.svg"/> 
     <img src="https://img.shields.io/npm/dm/capacitor-android-bluetoothmanager.svg"/>
 </a></p>
@@ -89,7 +89,7 @@ Definition: `initialize(): Promise<void>;`
 
 This is the first method you must call on your code. What this does :
 * If you don't have the permissions, a request to the user is made
-* We try to get a BlutoothAdapter if there is Blutooth Support
+* We try to get a BluetoothAdapter if there is Blurtooth Support
 * We start listening for BT events.
 
 ```

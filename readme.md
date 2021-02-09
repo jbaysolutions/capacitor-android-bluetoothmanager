@@ -2,7 +2,6 @@
 
 <h1 align="center">Capacitor-Android-BluetoothManager</h1>
 
-
 <p align="center">
 <a href="https://www.npmjs.com/package/capacitor-android-bluetoothmanager">
     <img src="https://img.shields.io/npm/v/capacitor-android-bluetoothmanager.svg"/> 

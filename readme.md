@@ -12,7 +12,7 @@
 <a href="https://jbaysolutions.github.io/capacitor-android-bluetoothmanager/" target="_blank">Documentation Website</a>
 </h2>
 
-**Current version: 0.0.4**
+**Current version: 0.0.5**
 
 
 **NPM release: https://www.npmjs.com/package/capacitor-android-bluetoothmanager**

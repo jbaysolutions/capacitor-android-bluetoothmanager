@@ -3,7 +3,7 @@ sidebar: auto
 ---
 # Changelog
 
-## 0.0.5 - ( dev version )
+## 0.0.5 - (Fev 10, 2021)
 
 * Adding setDiscoverable()
 * Adding isDiscoverable()

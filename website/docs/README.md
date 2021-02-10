@@ -18,7 +18,9 @@ features:
 - title: Set Device name
   details: 
 - title: Listen for State Changes
-  details: 
+  details:
+- title: Setting Device Discoverable
+details: 
 ---
 
 <HomeFooter></HomeFooter>

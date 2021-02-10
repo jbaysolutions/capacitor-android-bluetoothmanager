@@ -21,6 +21,10 @@ export class BluetoothManagerPluginWeb extends WebPlugin implements BluetoothMan
     return { enabled: false };
   }
 
+  async isDiscoverable(): Promise<{ discoverable: boolean }> {
+    return { discoverable: false };
+  }
+
   async getName(): Promise<{ name: string }> {
     throw TypeError("No hardware support or no permissions")
   }
@@ -35,6 +39,10 @@ export class BluetoothManagerPluginWeb extends WebPlugin implements BluetoothMan
 
   async setDeviceName(deviceName: string): Promise<void> {
     throw TypeError("No hardware support or no permissions : " + deviceName);
+  }
+
+  async setDiscoverable(duration: number): Promise<void> {
+    throw TypeError("No hardware support or no permissions : " + duration);
   }
 }
 

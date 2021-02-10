@@ -27,6 +27,7 @@ import com.getcapacitor.PluginMethod;
 )
 public class BluetoothManagerPlugin extends Plugin {
 
+    protected static boolean DEBUG = false;
     protected static final String TAG = "JBAndroidBLManager";
     protected static final int BLUETOOTHMANAGER_REQUEST_PERMS = 9841;
     protected static final String PLUGIN_EVENT_NAME= "BluetoothManagerPluginEvent";
@@ -37,13 +38,13 @@ public class BluetoothManagerPlugin extends Plugin {
     @PluginMethod
     public void initialize(PluginCall call) {
         if (initialized) {
-            Log.e(TAG, "Already Initialized with Success. Stopping new init.");
+            if (DEBUG) Log.e(TAG, "Already Initialized with Success. Stopping new init.");
             return;
         }
 
-        Log.d(TAG, "Initializing BluetoothManagerPlugin");
+        if (DEBUG) Log.d(TAG, "Initializing BluetoothManagerPlugin");
         if (!hasRequiredPermissions()) {
-            Log.d(TAG, "Handling BluetoothManagerPlugin Permissions");
+            if (DEBUG) Log.d(TAG, "Handling BluetoothManagerPlugin Permissions");
             saveCall(call);
             pluginRequestAllPermissions();
         } else {
@@ -58,7 +59,7 @@ public class BluetoothManagerPlugin extends Plugin {
     protected void handleRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.handleRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        Log.d(TAG, "handling request perms result");
+        if (DEBUG) Log.d(TAG, "handling request perms result");
         PluginCall savedCall = getSavedCall();
 
         for(int result : grantResults) {
@@ -121,6 +122,39 @@ public class BluetoothManagerPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void isDiscoverable(PluginCall call) {
+        if (myBTAdapter==null) {
+            call.reject("No hardware support or no permissions", "HW_FAILURE");
+        }
+
+        JSObject ret = new JSObject();
+        ret.put("discoverable", (myBTAdapter.getScanMode() == BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE));
+        call.success(ret);
+    }
+
+    @PluginMethod
+    public void setDiscoverable(PluginCall call) {
+        if (myBTAdapter==null) {
+            call.reject("No hardware support or no permissions", "HW_FAILURE");
+        }
+
+        if (myBTAdapter.getScanMode() !=
+                BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
+            Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
+                    call.getInt("duration")
+            );
+
+            if (getContext() != null) {
+                getContext().startActivity(discoverableIntent);
+                call.success();
+            } else {
+                call.reject("No context to send Request", "SW_FAILURE");
+            }
+        }
+    }
+
+    @PluginMethod
     public void getName(PluginCall call) {
         if (myBTAdapter==null) {
             call.reject("No hardware support or no permissions", "HW_FAILURE");
@@ -144,7 +178,7 @@ public class BluetoothManagerPlugin extends Plugin {
             return;
         }
 
-        Log.d(TAG , "############ ALL DATA : " + call.getData().toString());
+        if (DEBUG) Log.d(TAG , "setDeviceName data received : " + ( call.getData()!= null? call.getData().toString() : "" ));
 
         String name = call.getString("deviceName");
         if (name == null) {
@@ -210,7 +244,7 @@ public class BluetoothManagerPlugin extends Plugin {
         }
 
         if (isEnablingOrDisablingProcessHappening) {
-            Log.d(TAG,"Already some process being executed!!!! 1");
+            if (DEBUG) Log.d(TAG,"Already some process being executed!!!! 1");
             call.reject("Already in the process of Enabling or Disabling", "ALREADY_BUSY");
             return;
         }
@@ -229,7 +263,7 @@ public class BluetoothManagerPlugin extends Plugin {
         boolean isDisableHappening = myBTAdapter.disable();
 
         if (!isDisableHappening) {
-            Log.d(TAG,"Disable not happening ! 2");
+            if (DEBUG) Log.d(TAG,"Disable not happening ! 2");
             getContext().unregisterReceiver(bluetoothEnablingBroadcastListener);
             bluetoothEnablingBroadcastListener.terminate();
             isEnablingOrDisablingProcessHappening = false;
@@ -243,7 +277,7 @@ public class BluetoothManagerPlugin extends Plugin {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            Log.d(TAG, "----------------------------- GOT ACTION : " + action);
+            if (DEBUG) Log.d(TAG, "----------------------------- GOT ACTION : " + action);
             if(action!= null && action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
 
                 int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
@@ -294,17 +328,17 @@ public class BluetoothManagerPlugin extends Plugin {
                 int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
 
                 if ( state == BluetoothAdapter.STATE_TURNING_ON) {
-                    Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_TURNING_ON ");
+                    if (DEBUG) Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_TURNING_ON ");
                     return;
                 }
                 if ( state == BluetoothAdapter.STATE_TURNING_OFF) {
-                    Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_TURNING_OFF ");
+                    if (DEBUG) Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_TURNING_OFF ");
                     return;
                 }
 
 
                 if ( state == BluetoothAdapter.STATE_ON) {
-                    Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_ON ");
+                    if (DEBUG) Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_ON ");
                     if (isEnablingProcess) {
                         call.success();
                     } else {
@@ -315,7 +349,7 @@ public class BluetoothManagerPlugin extends Plugin {
                 }
 
                 if ( state == BluetoothAdapter.STATE_OFF ) {
-                    Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_OFF ");
+                    if (DEBUG) Log.d(TAG,"--- ACTION_STATE_CHANGED --- STATE_OFF ");
                     if (isEnablingProcess) {
                         call.reject("Could not Enable BL");
                     } else {

@@ -12,6 +12,8 @@ export interface BluetoothManagerPluginPlugin {
 
   isBluetoothEnabled(): Promise<{ enabled: boolean }>;
 
+  isDiscoverable(): Promise<{ discoverable: boolean }>;
+
   getName(): Promise<{ name: string }>;
 
   enableBluetooth(): Promise<void>;
@@ -20,4 +22,5 @@ export interface BluetoothManagerPluginPlugin {
 
   setDeviceName(deviceName: string): Promise<void>;
 
+  setDiscoverable(duration: number): Promise<void>;
 }

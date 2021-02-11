@@ -23,8 +23,8 @@ module.exports = {
 		docsDir: 'website/docs',
 		editLinks: true,
 		algolia: {
-		  apiKey: '2f143d1edd24605564065dd02bf0a22b',
-		  indexName: 'vue_grid_layout'
+		  apiKey: '3da21d72fcacb3a2d2cccb889f2504fb',
+		  indexName: 'capacitor-android-bluetoothmanager'
 		},
 		locales: {
 			'/': {
